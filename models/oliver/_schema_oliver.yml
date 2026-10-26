@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: oliver_dim_customer
+    description: Customer dimension
+    columns:
+      - name: cust_key
+        description: Surrogate key
+        data_tests: [unique, not_null]
+  - name: oliver_dim_employee
+    description: Employee dimension
+    columns:
+      - name: employee_key
+        description: Surrogate key
+        data_tests: [unique, not_null]
+  - name: oliver_dim_product
+    description: Product dimension
+    columns:
+      - name: product_key
+        description: Surrogate key
+        data_tests: [unique, not_null]
+  - name: oliver_dim_store
+    description: Store dimension, one row per store
+    columns:
+      - name: store_key
+        description: Surrogate key
+        data_tests: [unique, not_null]
+  - name: oliver_dim_date
+    description: Date dimension
+    columns:
+      - name: date_key
+        description: Date in YYYYMMDD format
+        data_tests: [unique, not_null]
+  - name: fact_sales
+    description: Sales fact table, one row per order line
+    columns:
+      - name: cust_key
+        data_tests: [not_null]
+      - name: date_key
+        data_tests: [not_null]
+      - name: store_key
+        data_tests: [not_null]
+      - name: product_key
+        data_tests: [not_null]
+      - name: employee_key
+        data_tests: [not_null]
+  - name: sales
+    description: Semantic layer for analysts, joining the fact table to all dimensions
