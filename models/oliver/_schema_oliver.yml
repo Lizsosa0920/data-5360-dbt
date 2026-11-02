@@ -46,3 +46,4 @@ models:
         data_tests: [not_null]
   - name: sales
     description: Semantic layer for analysts, joining the fact table to all dimensions
+  - name: stg_employee_certifications
